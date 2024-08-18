@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,
+body {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-family: var(--sans-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fff;
+    color: #000;
+    min-height: 100vh;
+}
+
+html {
+    // https://css-tricks.com/your-css-reset-needs-text-size-adjust-probably/
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body {
+    padding: 1em;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--blue);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+    margin-bottom: 1rem;
+
+    &:where(:last-child) {
+        margin-bottom: 0;
+    }
+}
+
+small {
+    font-size: 0.85em;
+}
+
+[hidden] {
+    display: none !important;
+}

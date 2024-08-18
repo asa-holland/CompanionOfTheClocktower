@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="{{ app.request.locale|replace({ '_': '-' }) }}" dir="{{ app.request.locale in ['he_IL'] ? 'rtl' : 'ltr' }}">
+<head>
+
+{% block dns_prefetch %}{% endblock %}
+
+{#
+We set a global variable `whole_title` to be the contents of the `whole_title`
+block. This allows some of the meta includes to reference the contents while
+also allowing developers to create a unique title if they need to.
+#}
+<title>{% set whole_title -%}
+    {% block whole_title %}{% block title %}{% endblock %} - {{ 'title'|trans }}{% endblock %}
+{% endset -%}{{ whole_title }}</title>
+{% block meta -%}
+    {%- include 'includes/meta/tags.html.twig' -%}
+    {%- include 'includes/meta/favicon.html.twig' -%}
+{%- endblock %}
+
+{% block styles %}{% endblock %}
+
+</head>
+<body class="{{ body_class|default('') }}">
+
+{% import 'macros/forms.html.twig' as forms %}
+<main role="main" id="main">{% block body %}{% endblock %}</main>
+
+{% block javascript %}{% endblock %}
+{# This needs to be written in ES5 so that the HTML minifier can minify it. #}
+<script>
+(function (isDialogSupported, doc, link, script) {
+
+    if (isDialogSupported) {
+        return;
+    }
+
+    link = doc.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "{{ asset('build/css/dialog.css') }}";
+    doc.head.append(link);
+
+    script = doc.createElement("script");
+    script.src = "{{ asset('build/js/dialog.js') }}";
+    doc.body.append(script);
+
+}("showModal" in document.createElement("dialog"), document));
+</script>
+<script>
+// https://github.com/javan/form-request-submit-polyfill
+(function (prototype) {
+
+    if (typeof prototype.requestSubmit == "function") {
+        return;
+    }
+
+    prototype.requestSubmit = function (submitter) {
+
+        if (submitter) {
+
+            validateSubmitter(submitter, this)
+            submitter.click()
+
+        } else {
+
+            submitter = document.createElement("input")
+            submitter.type = "submit"
+            submitter.hidden = true
+            this.appendChild(submitter)
+            submitter.click()
+            this.removeChild(submitter)
+
+        }
+
+    }
+
+    function validateSubmitter(submitter, form) {
+        submitter instanceof HTMLElement || raise(TypeError, "parameter 1 is not of type 'HTMLElement'")
+        submitter.type == "submit" || raise(TypeError, "The specified element is not a submit button")
+        submitter.form == form || raise(DOMException, "The specified element is not owned by this form element", "NotFoundError")
+    }
+
+    function raise(errorConstructor, message, name) {
+        throw new errorConstructor("Failed to execute 'requestSubmit' on 'HTMLFormElement': " + message + ".", name)
+    }
+
+}(HTMLFormElement.prototype));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% macro toggle(settings) %}
+<span class="toggle-switch">
+    <input type="checkbox"
+        class="toggle-switch__input"
+        name="{{ settings.name }}"
+        {% if settings.id|default(false) %}id="{{ settings.id }}"{% endif %}
+        {% if settings.value|default(false) %}value="{{ settings.value }}"{% endif %}
+        {% for name, value in settings.attributes|default({}) %}
+            {{ name }}="{{ value }}"
+        {% endfor %}
+        {% if settings.checked|default(false) %}checked{% endif %}
+    >
+    <span class="toggle-switch__render" aria-hidden="true"></span>
+</span>
+{% endmacro %}
+
+{% macro switch(settings) %}
+<{{ settings.node|default('span') }} class="switch {{ settings.classes|default('') }}">
+    <span class="switch__input">
+        {{ _self.toggle(settings) }}
+    </span>
+    <label for="{{ settings.id }}" class="switch__label">{{ settings.label }}</label>
+</{{ settings.node|default('span') }}>
+{% endmacro %}
+
+{% macro file(settings) %}
+<span class="file-upload">
+    <input type="file"
+        class="file-upload__input"
+        name="{{ settings.name }}"
+        {% if settings.id|default(false) %}id="{{ settings.id }}"{% endif %}
+        {% if settings.accept|default(false) %}accept="{{ settings.accept }}"{% endif %}
+        {% for name, value in settings.attributes|default({}) %}
+            {{ name }}="{{ value }}"
+        {% endfor %}
+        {% if settings.required|default(false) %}required{% endif %}
+    >
+    <span class="file-upload__render"
+        aria-hidden="true"
+        data-placeholder="{{ settings.placeholder|default( 'forms.file.placeholder'|trans ) }}"
+        data-value="{{ settings.value|default(settings.placeholder|default( 'forms.file.button'|trans )) }}"
+        data-button="{{ settings.button|default( 'forms.file.button'|trans ) }}"
+    ></span>
+</span>
+{% endmacro %}
+
+{% macro range(settings) %}
+<div class="range {{ settings.classes|default('') }}">
+    <label for="{{ settings.id }}" class="range__label">{{ settings.label }}</label>
+    <input
+        type="range"
+        name="{{ settings.name }}"
+        id="{{ settings.id }}"
+        class="range__input"
+        {% if settings.min|default(false) %}min="{{ settings.min }}"{% endif %}
+        {% if settings.max|default(false) %}max="{{ settings.max }}"{% endif %}
+        {% if settings.step|default(false) %}step="{{ settings.step }}"{% endif %}
+        {% if settings.value|default(false) %}value="{{ settings.value }}"{% endif %}
+        {% if settings.output|default(false) %}data-output="#{{ settings.output }}"{% endif %}
+    >
+    {% if settings.output|default(false) %}
+        <output id="{{ settings.output }}" class="range__output">{% if settings.value|default(false) %}{{ settings.value }}{% endif %}</output>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro radio(settings) %}
+<label for="{{ settings.id|default(settings.name ~ '-' ~ settings.value) }}" class="radio">
+    <span class="radio__wrapper">
+        <input
+            type="radio"
+            name="{{ settings.name }}"
+            value="{{ settings.value }}"
+            id="{{ settings.id|default(settings.name ~ '-' ~ settings.value) }}"
+            class="radio__input"
+            {% if settings.required|default(false) %}required{% endif %}
+            {% if settings.checked|default(false) %}checked{% endif %}
+        >
+        <span class="radio__render"></span>
+    </span>
+    <span class="radio__label">{{ settings.label }}</span>
+</label>
+{% endmacro %}

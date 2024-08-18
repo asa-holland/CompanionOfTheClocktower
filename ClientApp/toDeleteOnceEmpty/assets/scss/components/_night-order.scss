@@ -1,0 +1,47 @@
+.night-order {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.night-order__item {
+    padding: 0.5em 0;
+    margin: 0;
+
+    @at-root {
+        & ~ & {
+            border-top: 1px solid rgb(255 255 255 / 60%);
+        }
+    }
+
+    &:not(.is-in-play),
+    &.is-dead {
+        opacity: 0.6;
+    }
+
+}
+
+.night-order__heading {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1em;
+    padding-left: 0.25em;
+    margin-bottom: 0.5em;
+}
+
+.night-order__icon {
+    width: 2em;
+    aspect-ratio: auto 177 / 124;
+    object-fit: contain;
+}
+
+.night-order__role {
+    margin: 0;
+    font-family: var(--serif-font);
+    flex-grow: 1;
+}
+
+.night-order__ability {
+    font-size: 0.8em;
+    margin: 0;
+}

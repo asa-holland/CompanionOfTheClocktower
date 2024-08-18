@@ -1,0 +1,41 @@
+.sidebar {
+    border: 0.1em solid #000;
+    padding: 0;
+    margin-bottom: 1em;
+    display: flex;
+}
+
+.sidebar--full {
+    height: 100%;
+}
+
+.sidebar--reverse {
+    flex-direction: row-reverse;
+}
+
+.sidebar__side {
+    background-image: url("../../img/background-img3.webp");
+    color: #fff;
+    font-family: var(--serif-font);
+    padding: 1em 0.2em;
+    margin: 0;
+}
+
+.sidebar__side-content {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    display: inline-block;
+    position: sticky;
+    top: 1em;
+
+    @at-root {
+        [dir="rtl"] & {
+            text-orientation: mixed;
+        }
+    }
+}
+
+.sidebar__body {
+    padding: 1em;
+    width: 100%;
+}

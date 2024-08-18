@@ -1,0 +1,80 @@
+.dialog {
+    background-color: transparent;
+    border: none;
+    margin: auto;
+    padding: 0;
+}
+
+.dialog--blur-background::backdrop {
+    background-image: radial-gradient(circle at center, rgb(0 0 0 / 50%) 20%, rgb(0 0 0 / 70%) 100%);
+    backdrop-filter: blur(0.5em);
+}
+
+.dialog--blur-background + .backdrop {
+    background-image: radial-gradient(circle at center, rgb(0 0 0 / 50%) 20%, rgb(0 0 0 / 70%) 100%);
+    backdrop-filter: blur(0.5em);
+}
+
+.dialog--hide-background::backdrop {
+    background-color: #000;
+    background-image: url("../../img/background-img3.webp");
+}
+
+.dialog--hide-background + .backdrop {
+    background-color: #000;
+    background-image: url("../../img/background-img3.webp");
+}
+
+.dialog__content {
+    border: 0.2em solid #000;
+    background-color: #fff;
+    position: relative;
+    width: min(80vw, 30em);
+    max-width: 100%;
+    background-image: url("../../img/background-img.webp");
+    margin-left: auto;
+    margin-right: auto;
+
+    @at-root {
+        .dialog--polyfilled > #{&} {
+            max-height: 80vh;
+            overflow: auto;
+        }
+    }
+}
+
+.dialog__header {
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.dialog__title {
+    font-family: var(--serif-font);
+    text-shadow:
+        -0.05em -0.05em 0.1em rgb(255 255 255 / 80%),
+        0.05em 0.05em 0.1em rgb(0 0 0 / 40%);
+    margin: 0;
+    flex-grow: 1;
+}
+
+.dialog__hide {
+    @extend %no-btn;
+    cursor: pointer;
+    font-size: 2em;
+    line-height: 1;
+    text-shadow:
+        -0.05em -0.05em 0.1em rgb(255 255 255 / 80%),
+        0.05em 0.05em 0.1em rgb(0 0 0 / 40%);
+}
+
+.dialog__body {
+    padding: 1em;
+
+    @at-root {
+        .dialog__header + #{&} {
+            padding-top: 0;
+        }
+    }
+}

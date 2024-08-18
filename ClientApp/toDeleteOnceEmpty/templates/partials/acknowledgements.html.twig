@@ -1,0 +1,14 @@
+{% embed 'includes/details.html.twig' with {
+    summary: 'acknowledgements.title'|trans,
+    id: 'acknowledgements'
+} %}
+    {% block body %}
+    <p>{{ 'acknowledgements.acknowledgements.0'|trans|raw }}</p>
+    <p>{{ 'acknowledgements.acknowledgements.1'|trans|raw }}</p>
+    <p>{{ 'acknowledgements.acknowledgements.2'|trans|raw }}</p>
+    <p>{{ 'acknowledgements.acknowledgements.3'|trans|raw }}</p>
+    <p>{{ 'acknowledgements.acknowledgements.4'|trans|raw }}</p>
+    <p>{{ 'acknowledgements.acknowledgements.5'|trans|raw }}</p>
+    <p>{{ 'acknowledgements.acknowledgements.6'|trans|raw }}</p>
+    {% endblock %}
+{% endembed %}

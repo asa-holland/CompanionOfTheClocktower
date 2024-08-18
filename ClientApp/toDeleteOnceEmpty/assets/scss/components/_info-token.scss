@@ -1,0 +1,101 @@
+.info-token {
+    width: min(80%, 40rem);
+    text-align: center;
+
+    > .dialog__content {
+        // Darken the hex colour by making it semi-transparent and putting it
+        // between the box and its content.
+        background-color: #000;
+        background-image: none;
+        border-style: none;
+        display: grid;
+
+        &::before {
+            content: "";
+            grid-area: 1 / 1;
+            background-color: var(--colour, #000);
+            opacity: 0.4;
+        }
+
+        &::after {
+            content: "";
+            grid-area: 1 / 1;
+            border: 0.1em solid #fff;
+            margin: 0.5em;
+        }
+
+        > .dialog__body {
+            grid-area: 1 / 1;
+            z-index: 1;
+        }
+    }
+}
+
+.info-token__hide {
+    @extend %no-btn;
+    cursor: pointer;
+    font-size: 2em;
+    line-height: 1;
+    color: #fff;
+    display: block;
+    margin-left: auto;
+
+    @at-root {
+        [dir="rtl"] & {
+            margin-left: 0;
+            margin-right: auto;
+        }
+    }
+}
+
+.info-token__text {
+    font-size: clamp(1rem, 10vw, 3rem);
+    margin: 0;
+    color: #fff;
+
+    &:lang(de),
+    &:lang(ru) {
+        font-size: clamp(1rem, 8vw, 3rem);
+    }
+
+    &:lang(kv) {
+        font-size: clamp(1rem, 7vw, 2.5rem);
+    }
+
+    > strong {
+        font-family: var(--serif-font);
+        font-size: 1.3em;
+        letter-spacing: 0.1em;
+        display: inline-block;
+    }
+}
+
+.info-token__actions {
+    position: absolute;
+    left: 1.2em;
+    top: 1.2em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    @at-root {
+        [dir="rtl"] & {
+            left: auto;
+            right: 1.2em;
+        }
+    }
+}
+
+.info-token__button {
+    @extend %no-btn;
+    color: #fff;
+    width: 1em;
+}
+
+.info-token-heading {
+    font-family: var(--serif-font);
+    font-weight: normal;
+    font-size: 1em;
+    text-shadow: 0.1em 0.1em 0.1em rgb(0 0 0 / 80%);
+    margin: 1em 0;
+}

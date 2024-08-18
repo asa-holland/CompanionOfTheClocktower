@@ -1,0 +1,11 @@
+.character-list {
+
+    &:not(.is-show-existing) > .is-in-play,
+    &:not(.is-show-travellers) > [data-team="traveller"],
+    &:not(.is-show-evil) > [data-team="minion"],
+    &:not(.is-show-evil) > [data-team="demon"],
+    &:not(.is-show-fabled) > [data-team="fabled"] {
+        display: none;
+    }
+
+}

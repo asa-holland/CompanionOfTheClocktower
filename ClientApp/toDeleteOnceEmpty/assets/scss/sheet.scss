@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+@import "./base/fonts";
+@import "./base/root";
+@import "./base/elements";
+
+a {
+    color: #337ab7;
+}
+
+@import "./objects/no-btn";
+@import "./objects/sr-only";
+
+@import "./components/body";
+@import "./components/title";
+@import "./components/edition";
+@import "./components/button";
+@import "./components/dialog";
+@import "./components/qr";
+@import "./components/locale-form";
+@import "./components/breakdown";
+
+@media print {
+
+    @page {
+        margin: 0.5cm 0.5cm 1cm;
+    }
+
+    html,
+    body {
+        font-size: 9pt;
+        margin: 0;
+        background-color: #fff !important;
+        background-image: none !important;
+    }
+
+    a[href] {
+        color: #000;
+        text-decoration: none;
+
+        &::after {
+            content: " (" attr(href) ")";
+        }
+    }
+
+    small {
+        font-size: 7pt;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
+
+    :last-child {
+        page-break-after: auto;
+    }
+
+    .body-list {
+        background-color: #fff;
+        background-image: none;
+    }
+
+    .title {
+        text-shadow: none;
+        font-size: 14pt;
+        color: #000;
+    }
+
+    .edition {
+        page-break-inside: avoid;
+    }
+
+    .edition > summary {
+        font-size: 12pt;
+        text-align: left;
+        color: #000;
+    }
+
+    .edition__heading-text {
+        border: none;
+        background-color: #fff;
+        margin: 0;
+        padding-left: 0;
+        box-shadow: none;
+
+        &::before {
+            display: none;
+        }
+    }
+
+    .edition__role {
+        grid-template-areas:
+            "token name ability"
+            "token jinxes ability";
+        grid-template-columns: 25pt 80pt 1fr;
+        grid-template-rows: -webkit-min-content;
+        grid-template-rows: 1fr min-content;
+        gap: 0 4pt;
+        padding: 2pt 0;
+        page-break-inside: avoid;
+    }
+
+    .edition__role--jinx {
+        grid-template-areas:
+            "target trick ability";
+        grid-template-columns: 25pt 25pt 1fr;
+    }
+
+    .edition__role + .edition__role {
+        border: none;
+    }
+
+    .edition__image {
+        width: 50pt;
+    }
+
+    .edition__name {
+        font-size: 10pt;
+    }
+
+    .edition__ability {
+        font-size: 9pt;
+    }
+
+    .edition__jinxes {
+        gap: 2pt;
+        margin-top: 2pt;
+    }
+
+    .edition__jinx {
+        width: 8pt;
+    }
+
+    .button {
+        display: none;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+}

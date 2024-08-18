@@ -1,0 +1,50 @@
+.jinxes {
+    border-collapse: collapse;
+}
+
+.jinxes__jinx {
+    opacity: 0.6;
+    display: none;
+
+    &.is-active {
+        opacity: 1;
+        display: table-row;
+    }
+
+    @at-root {
+        #{&}.is-active ~ #{&}.is-active > .jinxes__cell,
+        .is-show-all > #{&} ~ #{&} > .jinxes__cell {
+            border-top: 1px solid rgb(255 255 255 / 60%);
+        }
+
+        .is-show-all > #{&} ~ #{&} > .jinxes__cell {
+            border-top: 1px solid rgb(255 255 255 / 60%);
+        }
+
+        .is-show-all > #{&} {
+            display: table-row;
+        }
+    }
+}
+
+.jinxes__cell {
+    padding: 0.5em 0.2em;
+}
+
+.jinxes__cell--text {
+    font-size: 0.8em;
+}
+
+.jinxes__icon {
+    max-width: 4em;
+    display: block;
+    margin: 0 auto;
+}
+
+.jinxes__name {
+    font-family: var(--serif-font);
+    font-size: 0.5em;
+    display: block;
+    text-align: center;
+    margin-top: 0.5em;
+}
