@@ -7,7 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
-namespace ChronicleOfTheClocktower.Utils
+namespace CompanionOfTheClocktower.Utils
 {
     public class Utilities
     {

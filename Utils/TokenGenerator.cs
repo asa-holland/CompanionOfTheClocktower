@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ChronicleOfTheClocktower.Utils
+namespace CompanionOfTheClocktower.Utils
 {
     public class TokenGenerator
     {

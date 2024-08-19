@@ -1,1 +1,1 @@
-# ChronicleOfTheClocktower
+# CompanionOfTheClocktower

@@ -1,5 +1,5 @@
 import React from 'react'
 
 export function App() {
-  return <div>Chronicle of the Clocktower</div>
+  return <div>Companion of the Clocktower</div>
 }

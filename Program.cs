@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ChronicleOfTheClocktower.Models;
-using ChronicleOfTheClocktower.Utils;
+using CompanionOfTheClocktower.Models;
+using CompanionOfTheClocktower.Utils;
 
-namespace ChronicleOfTheClocktower
+namespace CompanionOfTheClocktower
 {
     public class Program
     {
@@ -27,7 +27,7 @@ namespace ChronicleOfTheClocktower
 
             var task = host.RunAsync();
 
-            Utilities.Notify("ChronicleOfTheClocktower Running!");
+            Utilities.Notify("CompanionOfTheClocktower Running!");
 
             Console.WriteLine("You must also have the ClientApp running. In a separate terminal, run:");
             Console.WriteLine("    cd ClientApp");

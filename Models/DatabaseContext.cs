@@ -3,12 +3,12 @@ using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace ChronicleOfTheClocktower.Models
+namespace CompanionOfTheClocktower.Models
 {
     public partial class DatabaseContext : DbContext
     {
         // Change this if you want to have a different database name in development
-        private static string DEVELOPMENT_DATABASE_NAME = "ChronicleOfTheClocktowerDatabase";
+        private static string DEVELOPMENT_DATABASE_NAME = "CompanionOfTheClocktowerDatabase";
 
         // Change this to true if you want to have logging of SQL statements in development
         private static bool LOG_SQL_STATEMENTS_IN_DEVELOPMENT = false;
