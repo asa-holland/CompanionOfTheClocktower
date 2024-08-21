@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Token } from '../types/types'
 
 function TownSquare({ numberOfPlayers }: { numberOfPlayers: number }) {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [tokens, setTokens] = useState<Token[]>([])
-  const navigate = useNavigate()
 
   useEffect(() => {
     const boardElement = document.querySelector('.game-board') as HTMLElement
@@ -16,8 +15,9 @@ function TownSquare({ numberOfPlayers }: { numberOfPlayers: number }) {
   }, [])
 
   const tokenSize = 50
-  const horizontalMargin = 200 // Horizontal margin from the edges
-  const verticalMargin = 40 // Vertical margin from the edges
+  const horizontalMargin = 200
+  const verticalMargin = 40
+
   const centerX = dimensions.width / 2
   const centerY = dimensions.height / 2
 
@@ -41,9 +41,9 @@ function TownSquare({ numberOfPlayers }: { numberOfPlayers: number }) {
     if (numberOfPlayers >= 1 && numberOfPlayers <= 20) {
       setTokens(generateLayout(numberOfPlayers))
     } else {
-      setTokens([]) // Clear tokens for unsupported number of players
+      setTokens([])
     }
-  }, [numberOfPlayers, dimensions])
+  }, [numberOfPlayers, dimensions, generateLayout])
 
   const handleNameChange = (
     index: number,
@@ -63,8 +63,13 @@ function TownSquare({ numberOfPlayers }: { numberOfPlayers: number }) {
             <div
               className="player-token"
               style={{
+                position: 'absolute',
                 left: `${token.x}px`,
                 top: `${token.y}px`,
+                width: `${tokenSize}px`,
+                height: `${tokenSize}px`,
+                backgroundColor: 'blue',
+                borderRadius: '50%',
               }}
             >
               <input

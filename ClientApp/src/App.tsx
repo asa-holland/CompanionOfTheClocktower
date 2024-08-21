@@ -7,12 +7,16 @@ import Player from './components/Player'
 export function App() {
   return (
     <div>
-      <h1>Companion of the Clocktower</h1>
+      <header>
+        <h1>Companion of the Clocktower</h1>
+      </header>
 
-      <Routes>
-        <Route path="/" element={<Game />} />
-        <Route path="player/:id" element={<Player />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Game />} />
+          <Route path="/player/:id" element={<Player />} />
+        </Routes>
+      </main>
     </div>
   )
 }
