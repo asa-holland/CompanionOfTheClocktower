@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanionOfTheClocktower", "CompanionOfTheClocktower.csproj", "{C3E503E4-A594-423E-A80C-F128F939FDC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3E503E4-A594-423E-A80C-F128F939FDC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E503E4-A594-423E-A80C-F128F939FDC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E503E4-A594-423E-A80C-F128F939FDC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E503E4-A594-423E-A80C-F128F939FDC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98F8E9EA-C6E6-4270-8981-6E8773D0453D}
+	EndGlobalSection
+EndGlobal

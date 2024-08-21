@@ -16,102 +16,30 @@ function TownSquare({ numberOfPlayers }: { numberOfPlayers: number }) {
   }, [])
 
   const tokenSize = 50
-  const horizontalMargin = 40 // Horizontal margin from the edges
+  const horizontalMargin = 200 // Horizontal margin from the edges
   const verticalMargin = 40 // Vertical margin from the edges
   const centerX = dimensions.width / 2
   const centerY = dimensions.height / 2
 
-  // Calculate the radius dynamically based on the number of players and screen dimensions
   const radius = Math.min(
     (dimensions.width - 2 * horizontalMargin - tokenSize) / 2,
     (dimensions.height - 2 * verticalMargin - tokenSize) / 2
   )
 
-  const layouts: Record<number, Token[]> = {
-    1: [{ x: centerX - tokenSize / 2, y: centerY - tokenSize / 2, name: '' }],
-    2: [
-      {
-        x: centerX + radius * Math.cos(0) - tokenSize / 2,
-        y: centerY + radius * Math.sin(0) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos(Math.PI) - tokenSize / 2,
-        y: centerY + radius * Math.sin(Math.PI) - tokenSize / 2,
-        name: '',
-      },
-    ],
-    3: [
-      {
-        x: centerX + radius * Math.cos(0) - tokenSize / 2,
-        y: centerY + radius * Math.sin(0) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((2 * Math.PI) / 3) - tokenSize / 2,
-        y: centerY + radius * Math.sin((2 * Math.PI) / 3) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((4 * Math.PI) / 3) - tokenSize / 2,
-        y: centerY + radius * Math.sin((4 * Math.PI) / 3) - tokenSize / 2,
-        name: '',
-      },
-    ],
-    4: [
-      {
-        x: centerX + radius * Math.cos(0) - tokenSize / 2,
-        y: centerY + radius * Math.sin(0) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos(Math.PI / 2) - tokenSize / 2,
-        y: centerY + radius * Math.sin(Math.PI / 2) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos(Math.PI) - tokenSize / 2,
-        y: centerY + radius * Math.sin(Math.PI) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((3 * Math.PI) / 2) - tokenSize / 2,
-        y: centerY + radius * Math.sin((3 * Math.PI) / 2) - tokenSize / 2,
-        name: '',
-      },
-    ],
-    5: [
-      {
-        x: centerX + radius * Math.cos(0) - tokenSize / 2,
-        y: centerY + radius * Math.sin(0) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((2 * Math.PI) / 5) - tokenSize / 2,
-        y: centerY + radius * Math.sin((2 * Math.PI) / 5) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((4 * Math.PI) / 5) - tokenSize / 2,
-        y: centerY + radius * Math.sin((4 * Math.PI) / 5) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((6 * Math.PI) / 5) - tokenSize / 2,
-        y: centerY + radius * Math.sin((6 * Math.PI) / 5) - tokenSize / 2,
-        name: '',
-      },
-      {
-        x: centerX + radius * Math.cos((8 * Math.PI) / 5) - tokenSize / 2,
-        y: centerY + radius * Math.sin((8 * Math.PI) / 5) - tokenSize / 2,
-        name: '',
-      },
-    ],
+  const generateLayout = (numPlayers: number): Token[] => {
+    const tokens: Token[] = []
+    for (let i = 0; i < numPlayers; i++) {
+      const angle = (2 * Math.PI * i) / numPlayers
+      const x = centerX + radius * Math.cos(angle) - tokenSize / 2
+      const y = centerY + radius * Math.sin(angle) - tokenSize / 2
+      tokens.push({ x, y, name: '' })
+    }
+    return tokens
   }
 
   useEffect(() => {
-    if (numberOfPlayers >= 1 && numberOfPlayers <= 5) {
-      setTokens(layouts[numberOfPlayers])
+    if (numberOfPlayers >= 1 && numberOfPlayers <= 20) {
+      setTokens(generateLayout(numberOfPlayers))
     } else {
       setTokens([]) // Clear tokens for unsupported number of players
     }
@@ -127,8 +55,9 @@ function TownSquare({ numberOfPlayers }: { numberOfPlayers: number }) {
   }
 
   return (
-    <div className="play-area">
-      <div className="game-board">
+    <div className="game-board">
+      <div className="play-area">
+        <div style={{ height: '10%' }}></div>
         {tokens.map((token, index) => (
           <Link to={`/player/${index}`} state={{ tokens }} key={index}>
             <div
